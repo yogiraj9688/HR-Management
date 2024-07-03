@@ -1,0 +1,222 @@
+<template>
+    <lightning-card title="HR Management" icon-name="custom:custom36">
+        <div class="slds-p-left_medium slds-p-right_medium">
+            <lightning-button label="Create Consultant"
+                              variant="brand"
+                              class="slds-p-left_small slds-p-left_small"
+                              onclick={navigateToConsultant}>
+            </lightning-button>
+
+            <lightning-button label="View Consultant Data"
+                              variant="brand"
+                              class="slds-p-left_small slds-p-left_small"
+                              onclick={navigateToConsultantData}>
+            </lightning-button>
+            <br>
+            <div if:true={showConsultants}>
+                <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                    <thead>
+                        <tr>
+                            <th>Consultant Name</th>
+                            <th>Consultant Email</th>
+                            <th>Consultant DOJ</th>
+                            <th>Consultant DOB</th>
+                            <th>Consultant PAN</th>
+                            <th>Consultant Exp.</th>
+                            <th>Consultant Phone No.</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <template for:each={consultant} for:item="con">
+                            <tr key={con.Id}>
+                                <td>{con.Name}</td>
+                                <td>{con.Email__c}</td>
+                                <td>{con.Date_of_Joining__c}</td>
+                                <td>{con.Date_of_Birth__c}</td>
+                                <td>{con.Pan_Card__c}</td>
+                                <td>{con.Experience__c}</td>
+                                <td>{con.Phone__c}</td>
+                            </tr>
+                        </template>
+                    </tbody>
+                </table>
+                <br>
+                <div class="slds-text-align_center">
+                    <lightning-button label="Hide Data" onclick={hideConData}></lightning-button>
+                </div>
+            </div>
+            <hr>
+            <lightning-button label="Create Project"
+                              variant="brand"
+                              class="slds-p-left_small slds-p-right_small"
+                              onclick={navigateToProject}>
+            </lightning-button>
+
+            <lightning-button label="View Project Data"
+                              variant="brand"
+                              class="slds-p-left_small slds-p-right_small"
+                              onclick={navigateToProjectData}>
+            </lightning-button>
+            <br>
+            <div if:true={showProjects}>
+                <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                    <thead>
+                        <tr>
+                            <th>Project Name</th>
+                            <th>Client Name</th>
+                            <th>Duration</th>
+                            <th>Start Date</th>
+                            <th>End Date</th>
+                            <th>Estimate Budget</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <template for:each={project} for:item="pro">
+                            <tr key={pro.Id}>
+                                <td>{pro.Name}</td>
+                                <td>{pro.Client__c}</td>
+                                <td>{pro.Duration__c}</td>
+                                <td>{pro.Start_Date__c}</td>
+                                <td>{pro.End_Date__c}</td>
+                                <td>{pro.Estimate_Budget__c}</td>
+                            </tr>
+                        </template>
+                    </tbody>
+                </table>
+                <br>
+                <div class="slds-text-align_center">
+                    <lightning-button label="Hide Data"
+                                      onclick={hideProjectData}></lightning-button>
+                </div>
+            </div>
+            <hr>
+
+            <lightning-button label="Create Client"
+                              variant="brand"
+                              class="slds-p-left_small slds-p-right_small"
+                              onclick={navigateToClient}>
+            </lightning-button>
+
+            <lightning-button label="View Client Data"
+                              variant="brand"
+                              class="slds-p-left_small slds-p-right_small"
+                              onclick={navigateToClientData}>
+            </lightning-button>
+            <br>
+            <div if:true={showClients}>
+                <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                    <thead>
+                        <tr>
+                            <th>Client Name</th>
+                            <th>Phone</th>
+                            <th>City</th>
+                            <th>Postal Code</th>
+                            <th>State</th>
+                            <th>Street Address</th>
+                            <th>WebSite</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <template for:each={client} for:item="client">
+                            <tr key={client.Id}>
+                                <td>{client.Name}</td>
+                                <td>{client.Phone__c}</td>
+                                <td>{client.City__c}</td>
+                                <td>{client.Postal_Code__c}</td>
+                                <td>{client.State__c}</td>
+                                <td>{client.Street_Address__c}</td>
+                                <td>{client.Website__c}</td>
+                            </tr>
+                        </template>
+                    </tbody>
+                </table>
+                <br>
+                <div class="slds-text-align_center">
+                    <lightning-button label="Hide Data"
+                                      onclick={hideClientData}></lightning-button>
+                </div>
+            </div>
+            <hr>
+
+            <lightning-button label="Create Training"
+                              variant="brand"
+                              class="slds-p-left_small slds-p-right_small"
+                              onclick={navigateToTraining}>
+            </lightning-button>
+                        
+                              <lightning-button label="View Training Data"
+                              variant="brand"
+                              class="slds-p-left_small slds-p-right_small"
+                              onclick={navigateToTrainingData}>
+            </lightning-button>
+            <br>
+            <div if:true={showTraining}>
+                <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                    <thead>
+                        <tr>
+                            <th>Training Namme</th>
+                            <th>Technology</th>
+                            <th>Start Date</th>
+                            <th>End Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <template for:each={training} for:item="training">
+                            <tr key={training.Id}>
+                                <td>{training.Name}</td>
+                                <td>{training.Technology__c}</td>
+                                <td>{training.Start_Date__c}</td>
+                                <td>{training.End_Date__c}</td>
+                            </tr>
+                        </template>                          
+                    </tbody>
+                </table>
+                <br>
+                <div class="slds-text-slign_center">
+                    <lightning-button label="Hide Data"
+                                      onclick={hideTrainingData}>
+                    </lightning-button>
+                </div>
+            </div>
+
+            <lightning-button label="Create Past Information"
+                                variant="brand"
+                                    class="slds-p-left_small slds-p-right_small"
+                                onclick={navigateToPastInfo}>
+            </lightning-button>
+      
+            <lightning-button label="View Past Information"
+                            variant="brand"
+                            class="slds-p-left_small slds-p-right_small"
+                            onclick={navigateToPastInfoData}>
+            </lightning-button>
+            <br>
+            <div if:true={showPastInfo}>
+            <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+            <thead>
+                <tr>
+                    <th>Past Information Namme</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <template for:each={pastInfo} for:item="pastinfo">
+                    <tr key={pastinfo.Id}>
+                        <td>{pastinfo.Name}</td>
+                        <td>{pastinfo.Start_Date__c}</td>
+                        <td>{pastinfo.End_Date__c}</td>
+                    </tr>
+                </template>                          
+            </tbody>
+            </table>
+            <br>
+            <div class="slds-text-slign_center">
+            <lightning-button label="Hide Data"
+                                onclick={hidePastData}>
+            </lightning-button>
+            </div>
+            </div>
+        </div>
+    </lightning-card>
+</template>
